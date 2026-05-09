@@ -17,6 +17,18 @@ The kit has no build step. Consume it by either copy-pasting a `.ts` file into y
 }
 ```
 
+## Versioning
+
+Releases are automated via [release-please](https://github.com/googleapis/release-please). Every push to `main` opens or updates a Release PR titled `chore(main): release X.Y.Z` with a CHANGELOG entry and a version bump. Merging that PR creates the git tag `vX.Y.Z`.
+
+Use Conventional Commits in PR titles / squash-merge messages so release-please picks the right semver level:
+
+- `fix:` or `chore:` → patch (0.1.0 → 0.1.1)
+- `feat:` → minor pre-1.0; once we cut 1.0, `feat:` → minor and breaking → major
+- `feat!:` or `BREAKING CHANGE:` in the body → major
+
+Pre-1.0 the kit treats every `feat:` as a patch via `bump-patch-for-minor-pre-major: true`, so daily authoring stays at `0.1.x` until we cut 1.0.0 deliberately.
+
 ## Modules
 
 ### `virtual-joystick`

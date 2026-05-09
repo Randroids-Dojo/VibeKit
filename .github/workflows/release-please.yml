@@ -1,0 +1,23 @@
+name: release-please
+
+on:
+  push:
+    branches:
+      - main
+
+permissions:
+  contents: write
+  pull-requests: write
+
+jobs:
+  release-please:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: googleapis/release-please-action@v4
+        with:
+          # The release-please manifest config lives at the repo root
+          # (release-please-config.json + .release-please-manifest.json).
+          # On first run with no manifest the action bootstraps one at
+          # the version in package.json.
+          config-file: release-please-config.json
+          manifest-file: .release-please-manifest.json
