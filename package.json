@@ -1,0 +1,28 @@
+{
+  "name": "@randroids-dojo/vibekit",
+  "version": "0.1.0",
+  "description": "Reusable components and bootstrap for vibe-coded games and apps. Self-contained TypeScript modules used across multiple projects (VibeRacer, Flatline, VibeCity, VibeGear2, FrackingAsteroids). The default entry exposes framework-agnostic client modules; the `./server` subpath exposes Node-only helpers (KV, signing, rate-limit).",
+  "type": "module",
+  "main": "src/index.ts",
+  "types": "src/index.ts",
+  "exports": {
+    ".": "./src/index.ts",
+    "./server": "./src/server/index.ts"
+  },
+  "private": true,
+  "scripts": {
+    "type-check": "tsc --noEmit",
+    "test": "vitest run",
+    "test:watch": "vitest"
+  },
+  "dependencies": {
+    "@upstash/redis": "^1.37.0",
+    "zod": "^3.23.0"
+  },
+  "devDependencies": {
+    "@types/node": "^22.0.0",
+    "happy-dom": "^15.0.0",
+    "typescript": "^5.7.3",
+    "vitest": "^2.1.0"
+  }
+}
