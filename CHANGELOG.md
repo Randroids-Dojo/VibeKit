@@ -1,5 +1,13 @@
 # Changelog
 
+## [0.2.0](https://github.com/Randroids-Dojo/VibeKit/compare/v0.1.0...v0.2.0) (2026-05-09)
+
+
+### Features
+
+* **rng:** add Rng object form with split, serialize, and deserialize ([375bcd1](https://github.com/Randroids-Dojo/VibeKit/commit/375bcd1de7d414d8b0c30324a4a25d78b0a3002c))
+* **server/kv:** add KvLike interface + adaptUpstashRedis adapter ([276bb49](https://github.com/Randroids-Dojo/VibeKit/commit/276bb49e22440b3825719a7955c847ca2cfb52f1))
+
 ## [0.1.0](https://github.com/Randroids-Dojo/VibeKit/releases/tag/v0.1.0) (2026-05-09)
 
 Initial release of `@randroids-dojo/vibekit`.
