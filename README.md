@@ -68,6 +68,10 @@ Zod is the only runtime dependency in the kit; consumers pass a `z.ZodSchema<T>`
 
 Engine-agnostic ordered basketball scoring gate. `createRimScoringSensorState()` creates per-ball state, and `updateRimScoringSensor(state, params)` returns `'swish'`, `'score'`, `'rim'`, or `null`. A make only counts after a descending ball enters the above-rim shaft and then crosses the lower gate inside the rim cylinder, which prevents net-from-below false positives.
 
+### `swipe-gesture`
+
+Pure tap / upward-swipe classifier for canvas and touch games. `classifySwipeGesture(start, end, bounds, config?)` returns `tap`, `up-swipe`, or `none` plus `dragPowerNorm` and `lateralAngle`; `dragPowerNorm(start, current, bounds, config?)` gives the same power value for live previews.
+
 ## Server modules — `@randroid/game-kit/server`
 
 Server-only helpers that import `@upstash/redis` and `node:crypto`. Import path is the `./server` subpath, never the root, so a stray client import errors loudly:
