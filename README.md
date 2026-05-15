@@ -64,6 +64,10 @@ Defensive `localStorage` helpers validated with zod schemas. Every function is S
 
 Zod is the only runtime dependency in the kit; consumers pass a `z.ZodSchema<T>` directly. There is no React hook layer; project-side hooks compose `readStorage` + `listenStorage` for the hydrate-after-mount pattern.
 
+### `rim-scoring-sensor`
+
+Engine-agnostic ordered basketball scoring gate. `createRimScoringSensorState()` creates per-ball state, and `updateRimScoringSensor(state, params)` returns `'swish'`, `'score'`, `'rim'`, or `null`. A make only counts after a descending ball enters the above-rim shaft and then crosses the lower gate inside the rim cylinder, which prevents net-from-below false positives.
+
 ## Server modules — `@randroid/game-kit/server`
 
 Server-only helpers that import `@upstash/redis` and `node:crypto`. Import path is the `./server` subpath, never the root, so a stray client import errors loudly:
