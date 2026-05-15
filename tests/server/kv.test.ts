@@ -41,6 +41,8 @@ beforeEach(() => {
 afterEach(() => {
   delete process.env.KV_REST_API_URL
   delete process.env.KV_REST_API_TOKEN
+  delete process.env.UPSTASH_REDIS_REST_URL
+  delete process.env.UPSTASH_REDIS_REST_TOKEN
   resetKvForTesting()
 })
 
@@ -58,6 +60,13 @@ describe('getKv', () => {
   it('returns a Redis client when both env vars are populated', () => {
     process.env.KV_REST_API_URL = 'https://example.upstash.io'
     process.env.KV_REST_API_TOKEN = 'token'
+    const client = getKv()
+    expect(client).not.toBeNull()
+  })
+
+  it('supports Upstash Redis env vars', () => {
+    process.env.UPSTASH_REDIS_REST_URL = 'https://example.upstash.io'
+    process.env.UPSTASH_REDIS_REST_TOKEN = 'token'
     const client = getKv()
     expect(client).not.toBeNull()
   })

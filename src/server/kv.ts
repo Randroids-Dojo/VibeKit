@@ -1,7 +1,7 @@
 /**
  * Upstash Redis (KV) helpers. Server-only: imports `@upstash/redis`,
- * reads `process.env.KV_REST_API_URL` and
- * `process.env.KV_REST_API_TOKEN`, and is meant to run in Node /
+ * reads either `process.env.KV_REST_API_*` or
+ * `process.env.UPSTASH_REDIS_REST_*`, and is meant to run in Node /
  * Edge runtimes where those env vars are wired by the platform.
  *
  *   - `getKv()` returns a `Redis` client when both env vars are
@@ -33,13 +33,15 @@ import type { z } from 'zod'
 // so we cache the resolution explicitly.
 let cached: { instance: Redis | null } | null = null
 
-// Returns the configured `Redis` client, or `null` when either of
-// `KV_REST_API_URL` / `KV_REST_API_TOKEN` is missing or empty.
+// Returns the configured `Redis` client, or `null` when either url or token
+// is missing. Supports both the legacy Vercel KV env names and Upstash's
+// current Redis env names.
 // Useful as a feature flag in dev / preview where KV is not bound.
 export function getKv(): Redis | null {
   if (cached !== null) return cached.instance
-  const url = process.env.KV_REST_API_URL
-  const token = process.env.KV_REST_API_TOKEN
+  const url = process.env.KV_REST_API_URL || process.env.UPSTASH_REDIS_REST_URL
+  const token =
+    process.env.KV_REST_API_TOKEN || process.env.UPSTASH_REDIS_REST_TOKEN
   if (!url || !token) {
     cached = { instance: null }
     return null

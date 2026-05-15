@@ -82,7 +82,7 @@ import { getKv, readKv, writeKv, signToken, verifyToken, incrementWithExpiry } f
 
 ### `getKv()` and `readKv` / `writeKv` / `removeKv`
 
-`getKv()` returns an `@upstash/redis` `Redis` client when `KV_REST_API_URL` and `KV_REST_API_TOKEN` are populated, or `null` otherwise. Returning null lets routes degrade gracefully in local dev or preview deploys without a KV binding.
+`getKv()` returns an `@upstash/redis` `Redis` client when either `KV_REST_API_URL` / `KV_REST_API_TOKEN` or `UPSTASH_REDIS_REST_URL` / `UPSTASH_REDIS_REST_TOKEN` are populated, or `null` otherwise. Returning null lets routes degrade gracefully in local dev or preview deploys without a KV binding.
 
 `readKv<T>(kv, key, schema)` issues `GET`, validates the parsed value against a zod schema, and returns `T | null`. Upstash auto-parses JSON on reads. `writeKv(kv, key, value, { ttlSec? })` issues `SET` with optional TTL; returns `false` on thrown access. `removeKv(kv, key)` issues `DEL` swallowing failures.
 
