@@ -1,5 +1,18 @@
 # Changelog
 
+## [0.3.0](https://github.com/Randroids-Dojo/VibeKit/compare/v0.2.0...v0.3.0) (2026-05-15)
+
+
+### Features
+
+* add rim scoring sensor ([a3cb641](https://github.com/Randroids-Dojo/VibeKit/commit/a3cb6413ada6a72ee784c3b9e8d01a7b1b24c2d3))
+* add swipe gesture classifier ([824935d](https://github.com/Randroids-Dojo/VibeKit/commit/824935d3c6aab951e404cbbc20c14a3493ff4a76))
+
+
+### Bug Fixes
+
+* **server/kv:** support Upstash Redis env names ([4f61c87](https://github.com/Randroids-Dojo/VibeKit/commit/4f61c87281a0637bc2f23d678f7fa37a9b208b44))
+
 ## [0.2.3](https://github.com/Randroids-Dojo/VibeKit/compare/v0.2.2...v0.2.3) (2026-05-15)
 
 
