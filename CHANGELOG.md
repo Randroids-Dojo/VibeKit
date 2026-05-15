@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.2.1](https://github.com/Randroids-Dojo/VibeKit/compare/v0.2.0...v0.2.1) (2026-05-15)
+
+
+### Features
+
+* add ordered rim scoring sensor ([a3cb641](https://github.com/Randroids-Dojo/VibeKit/commit/a3cb641))
+
 ## [0.2.0](https://github.com/Randroids-Dojo/VibeKit/compare/v0.1.0...v0.2.0) (2026-05-09)
 
 
