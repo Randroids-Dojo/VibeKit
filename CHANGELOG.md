@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.2.3](https://github.com/Randroids-Dojo/VibeKit/compare/v0.2.2...v0.2.3) (2026-05-15)
+
+
+### Bug Fixes
+
+* **server/kv:** support Upstash Redis env names ([4f61c87](https://github.com/Randroids-Dojo/VibeKit/commit/4f61c87))
+
 ## [0.2.2](https://github.com/Randroids-Dojo/VibeKit/compare/v0.2.1...v0.2.2) (2026-05-15)
 
 
