@@ -1,6 +1,6 @@
 {
   "name": "@randroids-dojo/vibekit",
-  "version": "0.2.1",
+  "version": "0.2.2",
   "description": "Reusable components and bootstrap for vibe-coded games and apps. Self-contained TypeScript modules used across multiple projects (VibeRacer, Flatline, VibeCity, VibeGear2, FrackingAsteroids). The default entry exposes framework-agnostic client modules; the `./server` subpath exposes Node-only helpers (KV, signing, rate-limit).",
   "type": "module",
   "main": "src/index.ts",
