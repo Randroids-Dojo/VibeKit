@@ -72,6 +72,10 @@ Engine-agnostic ordered basketball scoring gate. `createRimScoringSensorState()`
 
 Pure tap / upward-swipe classifier for canvas and touch games. `classifySwipeGesture(start, end, bounds, config?)` returns `tap`, `up-swipe`, or `none` plus `dragPowerNorm` and `lateralAngle`; `dragPowerNorm(start, current, bounds, config?)` gives the same power value for live previews.
 
+### `audio-context`
+
+Web Audio lifecycle helpers shared by every project that synthesizes sound. `getAudioContext()` lazily creates and caches one `AudioContext` (with a `webkitAudioContext` fallback) and returns `null` when the Web Audio API is unavailable (SSR / headless / old browser). `resumeAudioContext()` creates-and-resumes from the first user gesture, since browsers start contexts suspended. `closeAudioContext()` tears it down and drops the reference; `resetAudioContextForTesting()` clears state without closing. Scope is deliberately just the context lifecycle: the synthesis graph and any master / bus routing stay in the consumer, since projects still diverge on shared-context versus per-layer-context shapes.
+
 ## Server modules — `@randroid/game-kit/server`
 
 Server-only helpers that import `@upstash/redis` and `node:crypto`. Import path is the `./server` subpath, never the root, so a stray client import errors loudly:
