@@ -131,4 +131,4 @@ When modeling, never leave surfaces flush or grazing:
 - Size the separation gap to the scene and camera, not a token `0.001`. Depth resolution falls off with distance (`d² / (near · (far − near))`); a gap safe at 1m fights at 40m. At room/hall scale, ~2-3cm is a safe floor.
 - Set the camera `near` plane to the closest the player can actually reach (often `0.1`, not `0.01`); a tiny near plane wastes precision everywhere.
 
-Verify in motion: pan or orbit the camera past every seam and watch it. A frozen-camera frame diff shows nothing even when the scene is full of z-fighting; diff consecutive frames *while the camera moves* instead.
+Verify in motion: pan or orbit the camera past every seam and watch it. A frozen-camera frame diff shows nothing even when the scene is full of z-fighting; diff consecutive frames *while the camera moves* instead. Verify from several angles too, not just head-on: a coplanar *side* seam (an accent box modeled at the parent's full width, so its side faces share the parent's side plane) is edge-on and invisible from the front, and only shows obliquely.
