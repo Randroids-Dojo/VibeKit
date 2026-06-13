@@ -117,3 +117,18 @@ pnpm install
 pnpm type-check
 pnpm test
 ```
+
+## Guidance for 3D consumers (z-fighting)
+
+Several games on this kit render 3D scenes (VibeRacer, VibeCity, VibeGear2, the VibeCoded.Games arcade). The most common "looks broken" artifact in those scenes is z-fighting: two opaque surfaces that share a plane, or cross at a shallow grazing angle, shimmer along the seam because the depth buffer cannot order them.
+
+The trap: **z-fighting is invisible in a still frame.** Parked, the depth ties resolve to one stable answer and the seam looks clean; it only flickers while the camera or geometry moves. A single screenshot is not a verification.
+
+When modeling, never leave surfaces flush or grazing:
+
+- Do not place a decal/sign/billboard face at the exact depth of the panel behind it, and do not sit a trim strip's face exactly on the surface it trims. Coplanar faces fight.
+- Do not bury an accent box (bezel, marquee, header, badge, plinth) into a larger body so its face ends up nearly parallel to and nearly the same depth as the body's face, or so its tilted underside grazes a near-parallel body face. Mount accents **clearly proud** of the surface (a few cm), or **fully enclosed** inside it, never flush.
+- Size the separation gap to the scene and camera, not a token `0.001`. Depth resolution falls off with distance (`d² / (near · (far − near))`); a gap safe at 1m fights at 40m. At room/hall scale, ~2-3cm is a safe floor.
+- Set the camera `near` plane to the closest the player can actually reach (often `0.1`, not `0.01`); a tiny near plane wastes precision everywhere.
+
+Verify in motion: pan or orbit the camera past every seam and watch it. A frozen-camera frame diff shows nothing even when the scene is full of z-fighting; diff consecutive frames *while the camera moves* instead.
